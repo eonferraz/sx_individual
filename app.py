@@ -80,7 +80,7 @@ if df_fat.empty or df_cart.empty or df_ped.empty:
     st.warning("Dados incompletos carregados.")
 else:
     hoje = datetime.today()
-    # render_titulo(hoje)
+    render_titulo(hoje)
     render_cards(df_fat, df_cart, df_ped, META_MENSAL, hoje)
     render_termometro(df_fat, df_cart, META_MENSAL, hoje)
     render_vendedores(df_fat, df_cart)
