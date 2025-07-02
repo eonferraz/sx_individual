@@ -8,4 +8,4 @@ def render_titulo(hoje):
         'October': 'Outubro', 'November': 'Novembro', 'December': 'Dezembro'
     }
     mes_portugues = meses_pt[hoje.strftime('%B')]
-    st.markdown(f"<h2 style='text-align:center;'>Faturamento {mes_portugues} - SX Lighting</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align:center; font-size:10pt;'>Faturamento {mes_portugues} - SX Lighting</h2>", unsafe_allow_html=True)
