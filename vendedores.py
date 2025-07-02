@@ -36,11 +36,12 @@ METAS = {
 }
 
 # Função termômetro individual
-def gerar_termometro(faturado, carteira, pendente, meta):
+def gerar_termometro(faturado, carteira, pendente, meta, pct_pendente):
     fig = go.Figure()
     fig.add_trace(go.Bar(x=[faturado], marker_color='#A0C63F', name='Faturado', orientation='h'))
-    fig.add_trace(go.Bar(x=[carteira], marker_color='#FFD85B', name='Carteira', orientation='h'))
-    fig.add_trace(go.Bar(x=[pendente], marker_color='#d62728', name='Pendente', orientation='h'))
+    fig.add_trace(go.Bar(x=[carteira], marker_color='#5BA4FF', name='Carteira', orientation='h'))
+    fig.add_trace(go.Bar(x=[pendente], marker_color='#d62728', name='Pendente', orientation='h',
+                         text=[f'{pct_pendente:.1f}%'], textposition='outside', textfont=dict(size=12)))
     fig.update_layout(
         barmode='stack', height=30, margin=dict(l=0, r=0, t=0, b=0),
         xaxis=dict(range=[0, meta], showticklabels=False), showlegend=False
@@ -73,34 +74,35 @@ def render_vendedores(df_fat, df_cart):
         pct_atingido = ((fat + cart) / meta) * 100 if meta else 0
         pct_pendente = (pend / meta) * 100 if meta else 0
 
-        termo = gerar_termometro(fat, cart, pend, meta)
+        termo = gerar_termometro(fat, cart, pend, meta, pct_pendente)
 
         resumo.append({
-            'Emoji': emoji,
-            'Vendedor': vendedor,
-            'Meta': f"R$ {meta:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
-            'Faturado': f"R$ {fat:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
-            'Carteira': f"R$ {cart:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
-            'Pendente': f"R$ {pend:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
-            '% Atingido': f"{pct_atingido:.1f}%",
-            '% Pendente': f"{pct_pendente:.1f}%",
+            'Emoji': f"<span style='font-size:24px'>{emoji}</span>",
+            'Vendedor': f"<strong style='font-size:16px'>{vendedor}</strong>",
+            'Meta': f"<span style='color:#0160A2'><strong>R$ {meta:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            'Faturado': f"<span style='color:#A0C63F'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            'Carteira': f"<span style='color:#5BA4FF'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            'Pendente': f"<span style='color:#d62728'><strong>R$ {pend:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            '% Atingido': f"<strong>{pct_atingido:.1f}%</strong>",
             'Termômetro': termo
         })
 
+    # Ordenar por % Atingido
+    resumo.sort(key=lambda x: float(x['% Atingido'].strip('%').replace('<strong>', '').replace('</strong>', '')), reverse=True)
+
     st.markdown("### Desempenho por Vendedor")
-    header_cols = st.columns([1, 3, 2, 2, 2, 2, 2, 2, 8])
-    headers = ['Emoji', 'Vendedor', 'Meta', 'Carteira', 'Faturado', 'Pendente', '% Atingido', '% Pendente', 'Termômetro']
+    header_cols = st.columns([1, 3, 2, 2, 2, 2, 2, 8])
+    headers = ['Emoji', 'Vendedor', 'Meta', 'Carteira', 'Faturado', 'Pendente', '% Atingido', 'Termômetro']
     for col, title in zip(header_cols, headers):
         col.markdown(f"**{title}**")
 
     for linha in resumo:
-        col1, col2, col3, col4, col5, col6, col7, col8, col9 = st.columns([1, 3, 2, 2, 2, 2, 2, 2, 8])
-        col1.markdown(f"{linha['Emoji']}")
-        col2.markdown(f"**{linha['Vendedor']}**")
-        col3.markdown(linha['Meta'])
-        col4.markdown(linha['Carteira'])
-        col5.markdown(linha['Faturado'])
-        col6.markdown(linha['Pendente'])
-        col7.markdown(linha['% Atingido'])
-        col8.markdown(linha['% Pendente'])
-        col9.plotly_chart(linha['Termômetro'], use_container_width=True)
+        col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([1, 3, 2, 2, 2, 2, 2, 8])
+        col1.markdown(linha['Emoji'], unsafe_allow_html=True)
+        col2.markdown(linha['Vendedor'], unsafe_allow_html=True)
+        col3.markdown(linha['Meta'], unsafe_allow_html=True)
+        col4.markdown(linha['Carteira'], unsafe_allow_html=True)
+        col5.markdown(linha['Faturado'], unsafe_allow_html=True)
+        col6.markdown(linha['Pendente'], unsafe_allow_html=True)
+        col7.markdown(linha['% Atingido'], unsafe_allow_html=True)
+        col8.plotly_chart(linha['Termômetro'], use_container_width=True)
