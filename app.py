@@ -82,4 +82,3 @@ else:
     render_titulo(hoje)
     render_cards(df_fat, df_cart, df_ped, META_MENSAL, hoje)
     render_termometro(df_fat, df_cart, META_MENSAL, hoje)
-    render_tabelas(df_fat, df_ped, hoje)
