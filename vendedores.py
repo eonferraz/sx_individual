@@ -16,7 +16,7 @@ EMOJIS = {
     'Mirian Goffi': '🍣',
     'Monica Reis': '🤩',
     'Stefania Andrade': '🧚🏻‍♀️',
-    'Yuri Rodrigues': '🤖'
+    'Yuri Rodrigues': '🐨'
 }
 
 # Metas por vendedor
