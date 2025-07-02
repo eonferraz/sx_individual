@@ -32,7 +32,8 @@ METAS = {
     'Celso Marinho': 190548.78,
     'Aline Ferreira': 1832877.67,
     'Monica Reis': 746951.22,
-    'Luciana Guisard': 190548.78
+    'Luciana Guisard': 190548.78,
+    'Outros': 0.0
 }
 
 # Função termômetro individual
@@ -53,15 +54,16 @@ def render_vendedores(df_fat, df_cart):
     mes = hoje.month
     ano = hoje.year
 
-    df_fat_mes = df_fat[df_fat['Data Emissão'].dt.month.eq(mes) & df_fat['Data Emissão'].dt.year.eq(ano)]
-    df_cart_mes = df_cart[df_cart['Data Entrega'].dt.month.eq(mes) & df_cart['Data Entrega'].dt.year.eq(ano)]
+    df_fat_mes = df_fat[df_fat['Data Emissão'].dt.month.eq(mes) & df_fat['Data Emissão'].dt.year.eq(ano)].copy()
+    df_cart_mes = df_cart[df_cart['Data Entrega'].dt.month.eq(mes) & df_cart['Data Entrega'].dt.year.eq(ano)].copy()
+
+    df_fat_mes['Vendedor'] = df_fat_mes['Vendedor'].apply(lambda x: x if x in METAS else 'Outros')
+    df_cart_mes['Vendedor'] = df_cart_mes['Vendedor'].apply(lambda x: x if x in METAS else 'Outros')
 
     resumo = []
+    vendedores = sorted(set(df_fat_mes['Vendedor']).union(df_cart_mes['Vendedor']))
 
-    vendedores = set(df_fat_mes['Vendedor']).union(df_cart_mes['Vendedor'])
-
-    for vendedor in sorted(vendedores):
-        nome = vendedor if vendedor in METAS else 'Outros'
+    for vendedor in vendedores:
         emoji = EMOJIS.get(vendedor, '')
         meta = METAS.get(vendedor, 0)
 
@@ -76,7 +78,7 @@ def render_vendedores(df_fat, df_cart):
 
         resumo.append({
             'Emoji': emoji,
-            'Vendedor': nome,
+            'Vendedor': vendedor,
             'Meta': f"R$ {meta:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
             'Faturado': f"R$ {fat:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
             'Carteira': f"R$ {cart:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
@@ -85,6 +87,12 @@ def render_vendedores(df_fat, df_cart):
             '% Pendente': f"{pct_pendente:.1f}%",
             'Termômetro': termo
         })
+
+    st.markdown("### Desempenho por Vendedor")
+    header_cols = st.columns([1, 3, 2, 2, 2, 2, 2, 2, 8])
+    headers = ['Emoji', 'Vendedor', 'Meta', 'Carteira', 'Faturado', 'Pendente', '% Atingido', '% Pendente', 'Termômetro']
+    for col, title in zip(header_cols, headers):
+        col.markdown(f"**{title}**")
 
     for linha in resumo:
         col1, col2, col3, col4, col5, col6, col7, col8, col9 = st.columns([1, 3, 2, 2, 2, 2, 2, 2, 8])
