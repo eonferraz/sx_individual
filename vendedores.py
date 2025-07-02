@@ -39,7 +39,7 @@ METAS = {
 def gerar_termometro(faturado, carteira, pendente, meta):
     fig = go.Figure()
     fig.add_trace(go.Bar(x=[faturado], marker_color='#A0C63F', name='Faturado', orientation='h'))
-    fig.add_trace(go.Bar(x=[carteira], marker_color='#5BA4FF', name='Carteira', orientation='h'))
+    fig.add_trace(go.Bar(x=[carteira], marker_color='#FFD85B', name='Carteira', orientation='h'))
     fig.add_trace(go.Bar(x=[pendente], marker_color='#d62728', name='Pendente', orientation='h'))
     fig.update_layout(
         barmode='stack', height=30, margin=dict(l=0, r=0, t=0, b=0),
