@@ -27,6 +27,7 @@ METAS = {
     'Maria Bianca Benco': 121951.22,
     'Mirian Goffi': 609756.10,
     'Stefania Andrade': 640243.90,
+    'Kathleen Dias': 190548.78,
     'Yuri Rodrigues': 190548.78,
     'Celso Marinho': 190548.78,
     'Aline Ferreira': 1832877.67,
@@ -77,8 +78,9 @@ def render_vendedores(df_fat, df_cart):
         termo = gerar_termometro(fat, cart, pend, meta, pct_pendente)
 
         resumo.append({
-            'Emoji': f"<span style='font-size:24px'>{emoji}</span>",
-            'Vendedor': f"<strong style='font-size:16px'>{vendedor}</strong>",
+            'pct_valor': pct_atingido,
+            'Emoji': f"<span style='font-size:28px'>{emoji}</span>",
+            'Vendedor': f"<strong style='font-size:18px'>{vendedor}</strong>",
             'Meta': f"<span style='color:#0160A2'><strong>R$ {meta:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Faturado': f"<span style='color:#A0C63F'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Carteira': f"<span style='color:#5BA4FF'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
@@ -88,7 +90,7 @@ def render_vendedores(df_fat, df_cart):
         })
 
     # Ordenar por % Atingido
-    resumo.sort(key=lambda x: float(x['% Atingido'].strip('%').replace('<strong>', '').replace('</strong>', '')), reverse=True)
+    resumo.sort(key=lambda x: x['pct_valor'], reverse=True)
 
     st.markdown("### Desempenho por Vendedor")
     header_cols = st.columns([1, 3, 2, 2, 2, 2, 2, 8])
