@@ -41,7 +41,7 @@ def gerar_termometro(faturado, carteira, pendente, meta, pct_pendente):
     fig.add_trace(go.Bar(x=[faturado], marker_color='#A0C63F', name='Faturado', orientation='h'))
     fig.add_trace(go.Bar(x=[carteira], marker_color='#FFD85B', name='Carteira', orientation='h'))
     fig.add_trace(go.Bar(x=[pendente], marker_color='#d62728', name='Pendente', orientation='h',
-                         text=[f'{pct_pendente:.1f}%'], textposition='inside', textanchor='end', textfont=dict(size=14)))
+                         text=[f'{pct_pendente:.1f}%'], textposition='inside', textfont=dict(size=14)))
     fig.update_layout(
         barmode='stack', height=40, margin=dict(l=0, r=0, t=0, b=0),
         xaxis=dict(range=[0, meta], showticklabels=False), showlegend=False
