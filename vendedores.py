@@ -27,7 +27,6 @@ METAS = {
     'Maria Bianca Benco': 121951.22,
     'Mirian Goffi': 609756.10,
     'Stefania Andrade': 640243.90,
-    'Kathleen Dias': 190548.78,
     'Yuri Rodrigues': 190548.78,
     'Celso Marinho': 190548.78,
     'Aline Ferreira': 1832877.67,
