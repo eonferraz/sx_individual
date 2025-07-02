@@ -43,7 +43,7 @@ def gerar_termometro(faturado, carteira, pendente, meta, pct_pendente):
     fig.add_trace(go.Bar(x=[pendente], marker_color='#d62728', name='Pendente', orientation='h',
                          text=[f'{pct_pendente:.1f}%'], textposition='inside', textfont=dict(size=12)))
     fig.update_layout(
-        barmode='stack', height=30, margin=dict(l=0, r=0, t=0, b=0),
+        barmode='stack', height=45, margin=dict(l=0, r=0, t=0, b=0),
         xaxis=dict(range=[0, meta], showticklabels=False), showlegend=False
     )
     return fig
@@ -106,5 +106,5 @@ def render_vendedores(df_fat, df_cart):
         col6.markdown(linha['Pendente'], unsafe_allow_html=True)
         col7.markdown(linha['% Atingido'], unsafe_allow_html=True)
         col8.plotly_chart(linha['Termômetro'], use_container_width=True)
-        st.markdown("<hr style='margin-top: 0.5rem; margin-bottom: 0.5rem'>", unsafe_allow_html=True)
+        st.markdown("<hr style='margin-top: 0.1rem; margin-bottom: 0.1rem'>", unsafe_allow_html=True)
 
