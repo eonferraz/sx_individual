@@ -39,7 +39,7 @@ METAS = {
 def gerar_termometro(faturado, carteira, pendente, meta, pct_pendente):
     fig = go.Figure()
     fig.add_trace(go.Bar(x=[faturado], marker_color='#A0C63F', name='Faturado', orientation='h'))
-    fig.add_trace(go.Bar(x=[carteira], marker_color='#5BA4FF', name='Carteira', orientation='h'))
+    fig.add_trace(go.Bar(x=[carteira], marker_color='#FFD85B', name='Carteira', orientation='h'))
     fig.add_trace(go.Bar(x=[pendente], marker_color='#d62728', name='Pendente', orientation='h',
                          text=[f'{pct_pendente:.1f}%'], textposition='outside', textfont=dict(size=12)))
     fig.update_layout(
@@ -82,7 +82,7 @@ def render_vendedores(df_fat, df_cart):
             'Vendedor': f"<strong style='font-size:18px'>{vendedor}</strong>",
             'Meta': f"<span style='color:#0160A2'><strong>R$ {meta:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Faturado': f"<span style='color:#A0C63F'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            'Carteira': f"<span style='color:#5BA4FF'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            'Carteira': f"<span style='color:#FFD85B'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Pendente': f"<span style='color:#d62728'><strong>R$ {pend:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             '% Atingido': f"<strong>{pct_atingido:.1f}%</strong>",
             'Termômetro': termo
