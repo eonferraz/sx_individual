@@ -24,5 +24,5 @@ def render_termometro(df_fat, df_cart, META_MENSAL, hoje):
     fig_termo.add_trace(go.Bar(x=[carteira], orientation='h', marker=dict(color='#FFD85B'), text=[f'{perc_carteira:.1f}%'], textposition='auto', textfont=dict(size=32)))
     fig_termo.add_trace(go.Bar(x=[restante], orientation='h', marker=dict(color='#d62728'), text=[f'{perc_restante:.1f}%'], textposition='auto', textfont=dict(size=32)))
 
-    fig_termo.update_layout(barmode='stack', height=80, margin=dict(t=10, b=10), showlegend=False, yaxis=dict(showticklabels=False))
+    fig_termo.update_layout(barmode='stack', height=50, margin=dict(t=10, b=10), showlegend=False, yaxis=dict(showticklabels=False))
     st.plotly_chart(fig_termo, use_container_width=True)
