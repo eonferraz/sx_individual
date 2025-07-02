@@ -106,5 +106,5 @@ def render_vendedores(df_fat, df_cart):
         col6.markdown(linha['Pendente'], unsafe_allow_html=True)
         col7.markdown(linha['% Atingido'], unsafe_allow_html=True)
         col8.plotly_chart(linha['Termômetro'], use_container_width=True)
-        st.markdown("<hr style='margin-top: 0.1rem; margin-bottom: 0.1rem'>", unsafe_allow_html=True)
+        st.markdown("---")
 
