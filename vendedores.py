@@ -5,7 +5,7 @@ from datetime import datetime
 # Emojis por vendedor
 EMOJIS = {
     'Aline Ferreira': '💣',
-    'Alvaro Marinho': '🐿️',
+    'Alvaro Marinho': '🦆',
     'Christiana Carvalho': '🧸',
     'Letícia Louzada': '🐅',
     'Luciana Guisard': '🤝🏻',
