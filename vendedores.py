@@ -20,7 +20,6 @@ EMOJIS = {
 
 # Metas por vendedor
 METAS = {
-    'Alvaro Marinho': 746951.22,
     'Christiana Carvalho': 746951.22,
     'Letícia Louzada': 746951.22,
     'Maria Schmidt': 190548.78,
@@ -78,16 +77,13 @@ def render_vendedores(df_fat, df_cart):
     col_esq, col_dir = st.columns(2)
 
     def render_coluna(col, lista):
+        headers = ['Emoji', 'Vendedor', 'Meta', 'Carteira', 'Faturado', 'Pendente', '% Atingido']
         for linha in lista:
             with col:
                 st.markdown("<hr style='margin-top: 0.5rem; margin-bottom: 0.5rem'>", unsafe_allow_html=True)
-                st.markdown(linha['Emoji'], unsafe_allow_html=True)
-                st.markdown(linha['Vendedor'], unsafe_allow_html=True)
-                st.markdown(linha['Meta'], unsafe_allow_html=True)
-                st.markdown(linha['Carteira'], unsafe_allow_html=True)
-                st.markdown(linha['Faturado'], unsafe_allow_html=True)
-                st.markdown(linha['Pendente'], unsafe_allow_html=True)
-                st.markdown(linha['% Atingido'], unsafe_allow_html=True)
+                cols = st.columns([1, 3, 2, 2, 2, 2, 2])
+                for i, campo in enumerate(headers):
+                    cols[i].markdown(linha[campo], unsafe_allow_html=True)
 
     render_coluna(col_esq, resumo[:metade])
     render_coluna(col_dir, resumo[metade:])
