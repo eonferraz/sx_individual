@@ -27,7 +27,7 @@ METAS = {
     'Mirian Goffi': 609756.10,
     'Stefania Andrade': 640243.90,
     'Yuri Rodrigues': 190548.78,
-    'Celso Marinho': 190548.78,
+    'Alvaro Marinho': 190548.78,
     'Aline Ferreira': 1832877.67,
     'Monica Reis': 746951.22,
     'Luciana Guisard': 190548.78,
@@ -78,8 +78,11 @@ def render_vendedores(df_fat, df_cart):
 
     def render_coluna(col, lista):
         headers = ['Emoji', 'Vendedor', 'Meta', 'Carteira', 'Faturado', 'Pendente', '% Atingido']
-        for linha in lista:
-            with col:
+        with col:
+            cols = st.columns([1, 3, 2, 2, 2, 2, 2])
+            for i, campo in enumerate(headers):
+                cols[i].markdown(f"<strong>{campo}</strong>", unsafe_allow_html=True)
+            for linha in lista:
                 st.markdown("<hr style='margin-top: 0.5rem; margin-bottom: 0.5rem'>", unsafe_allow_html=True)
                 cols = st.columns([1, 3, 2, 2, 2, 2, 2])
                 for i, campo in enumerate(headers):
