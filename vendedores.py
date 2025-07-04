@@ -63,10 +63,10 @@ def render_vendedores(df_fat, df_cart):
         resumo.append({
             'pct_valor': pct_atingido,
             'Emoji': f"<span style='font-size:28px'>{emoji}</span>",
-            'Vendedor': f"<strong style='font-size:18px'>{vendedor}</strong>",
+            'Vendedor': f"<strong style='font-size:28px'>{vendedor}</strong>",
             'Meta': f"<span style='color:#0160A2'><strong>R$ {meta:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Faturado': f"<span style='color:#A0C63F'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            'Carteira': f"<span style='color:#5BA4FF'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            'Carteira': f"<span style='color:#FFD85B'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Pendente': f"<span style='color:#d62728'><strong>R$ {pend:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             '% Atingido': f"<strong>{pct_atingido:.1f}%</strong>"
         })
