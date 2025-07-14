@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
+# Parâmetro para tamanho da fonte dos valores
+TAMANHO_FONTE = 20  # Altere aqui o tamanho da fonte
+
 # Emojis por vendedor
 EMOJIS = {
     'Aline Ferreira': '💣',
@@ -34,8 +37,6 @@ METAS = {
     'Outros': 0.0
 }
 
-# Função principal
-
 def render_vendedores(df_fat, df_cart):
     hoje = datetime.today()
     mes = hoje.month
@@ -57,18 +58,17 @@ def render_vendedores(df_fat, df_cart):
         fat = df_fat_mes[df_fat_mes['Vendedor'] == vendedor]['Total Produto'].sum()
         cart = df_cart_mes[df_cart_mes['Vendedor'] == vendedor]['Valor Receita Bruta Pedido'].sum()
         pend = max(meta - fat - cart, 0)
-
         pct_atingido = ((fat + cart) / meta) * 100 if meta else 0
 
         resumo.append({
             'pct_valor': pct_atingido,
-            'Emoji': f"<span style='font-size:22px'>{emoji}</span>",
-            'Vendedor': f"<strong style='font-size:22px'>{vendedor}</strong>",
-            'Meta': f"<span style='color:#0160A2'><strong>R$ {meta:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            'Faturado': f"<span style='color:#A0C63F'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            'Carteira': f"<span style='color:#FFD85B'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            'Pendente': f"<span style='color:#d62728'><strong>R$ {pend:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            '%': f"<strong>{pct_atingido:.1f}%</strong>"
+            'Emoji': f"<span style='font-size:{TAMANHO_FONTE}px'>{emoji}</span>",
+            'Vendedor': f"<strong style='font-size:{TAMANHO_FONTE}px'>{vendedor}</strong>",
+            'Meta': f"<span style='color:#0160A2; font-size:{TAMANHO_FONTE}px'><strong>R$ {meta:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            'Faturado': f"<span style='color:#A0C63F; font-size:{TAMANHO_FONTE}px'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            'Carteira': f"<span style='color:#FFD85B; font-size:{TAMANHO_FONTE}px'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            'Pendente': f"<span style='color:#d62728; font-size:{TAMANHO_FONTE}px'><strong>R$ {pend:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
+            '%': f"<strong style='font-size:{TAMANHO_FONTE}px'>{pct_atingido:.1f}%</strong>"
         })
 
     resumo.sort(key=lambda x: x['pct_valor'], reverse=True)
