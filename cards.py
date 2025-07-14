@@ -29,7 +29,7 @@ def render_cards(df_fat, df_cart, df_ped, META_MENSAL, hoje):
         </style>
     """, unsafe_allow_html=True)
 
-    col0, col1, col2, col3, col4 = st.columns(5)
+    col0, col1, col2, col3, col4 = st.columns([1, 2, 2, 2, 2])
 
     with col0:
         st.image("logo.jpg", width=180)
