@@ -63,13 +63,13 @@ def render_vendedores(df_fat, df_cart):
 
         resumo.append({
             'pct_valor': pct_atingido,
-            'Emoji': f"<span style='font-size:{TAMANHO_FONTE}px'>{emoji}</span>",
-            'Vendedor': f"<strong style='font-size:{TAMANHO_FONTE}px'>{vendedor}</strong>",
+            'Emoji': f"<span style='font-size:{TAMANHO_FONTE_ROTULOS}px'>{emoji}</span>",
+            'Vendedor': f"<strong style='font-size:{TAMANHO_FONTE_ROTULOS}px'>{vendedor}</strong>",
             'Meta': f"<span style='color:#0160A2; font-size:{TAMANHO_FONTE}px'><strong>R$ {meta:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Faturado': f"<span style='color:#A0C63F; font-size:{TAMANHO_FONTE}px'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Carteira': f"<span style='color:#FFD85B; font-size:{TAMANHO_FONTE}px'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Pendente': f"<span style='color:#d62728; font-size:{TAMANHO_FONTE}px'><strong>R$ {pend:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            '%': f"<strong style='font-size:{TAMANHO_FONTE}px'>{pct_atingido:.1f}%</strong>"
+            '%': f"<strong style='font-size:{TAMANHO_FONTE_ROTULOS}px'>{pct_atingido:.1f}%</strong>"
         })
 
     resumo.sort(key=lambda x: x['pct_valor'], reverse=True)
