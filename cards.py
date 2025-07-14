@@ -32,7 +32,7 @@ def render_cards(df_fat, df_cart, df_ped, META_MENSAL, hoje):
     col0, col0b, col1, col2, col3, col4 = st.columns(6)
 
     with col0:
-        st.image("logo.jpg", width=60)
+        st.image("logo.jpg", width=90)
 
     with col0b:
         st.markdown('<div class="sx-title">SX Lighting</div>', unsafe_allow_html=True)
