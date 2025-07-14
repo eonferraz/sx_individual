@@ -5,6 +5,7 @@ from datetime import datetime
 # Parâmetro para tamanho da fonte dos valores
 TAMANHO_FONTE = 18  # Altere aqui o tamanho da fonte
 TAMANHO_FONTE_ROTULOS = 20  # Altere aqui o tamanho da fonte
+TAMANHO_FONTE_PERCENT = 18 # Fonte do % 
 
 # Emojis por vendedor
 EMOJIS = {
@@ -69,7 +70,7 @@ def render_vendedores(df_fat, df_cart):
             'Faturado': f"<span style='color:#A0C63F; font-size:{TAMANHO_FONTE}px'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Carteira': f"<span style='color:#FFD85B; font-size:{TAMANHO_FONTE}px'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Pendente': f"<span style='color:#d62728; font-size:{TAMANHO_FONTE}px'><strong>R$ {pend:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            '%': f"<strong style='font-size:{TAMANHO_FONTE_ROTULOS}px'>{pct_atingido:.1f}%</strong>"
+            '%': f"<strong style='font-size:{TAMANHO_FONTE_PERCENT}px'>{pct_atingido:.1f}%</strong>"
         })
 
     resumo.sort(key=lambda x: x['pct_valor'], reverse=True)
