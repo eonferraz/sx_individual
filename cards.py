@@ -32,7 +32,7 @@ def render_cards(df_fat, df_cart, df_ped, META_MENSAL, hoje):
     col0, col1, col2, col3, col4 = st.columns(5)
 
     with col0:
-        st.image("logo.jpg", width=195)
+        st.image("logo.jpg", width=180)
 
     col1.markdown(f'<div class="card meta"><span class="card-title">Meta Mensal</span><b>R$ {META_MENSAL:,.2f}</b></div>'.replace(",", "X").replace(".", ",").replace("X", "."), unsafe_allow_html=True)
     col2.markdown(f'<div class="card realizado"><span class="card-title">Faturado</span><b>R$ {realizado:,.2f}</b></div>'.replace(",", "X").replace(".", ",").replace("X", "."), unsafe_allow_html=True)
