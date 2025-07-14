@@ -68,7 +68,7 @@ def render_vendedores(df_fat, df_cart):
             'Faturado': f"<span style='color:#A0C63F'><strong>R$ {fat:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Carteira': f"<span style='color:#FFD85B'><strong>R$ {cart:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
             'Pendente': f"<span style='color:#d62728'><strong>R$ {pend:,.2f}</strong></span>".replace(",", "X").replace(".", ",").replace("X", "."),
-            '% Atingido': f"<strong>{pct_atingido:.1f}%</strong>"
+            '%': f"<strong>{pct_atingido:.1f}%</strong>"
         })
 
     resumo.sort(key=lambda x: x['pct_valor'], reverse=True)
@@ -79,11 +79,11 @@ def render_vendedores(df_fat, df_cart):
     def render_coluna(col, lista):
         headers = ['Emoji', 'Vendedor', 'Meta', 'Carteira', 'Faturado', 'Pendente', '% Atingido']
         with col:
-            cols = st.columns([1, 3, 2, 2, 2, 2, 2])
+            cols = st.columns([1, 3, 2, 2, 2, 2, 1])
             for i, campo in enumerate(headers):
                 cols[i].markdown(f"<strong>{campo}</strong>", unsafe_allow_html=True)
             for linha in lista:
-                st.markdown("<hr style='margin-top: 0.5rem; margin-bottom: 0.5rem'>", unsafe_allow_html=True)
+                st.markdown("<hr style='margin-top: 0.1rem; margin-bottom: 0.1rem'>", unsafe_allow_html=True)
                 cols = st.columns([1, 3, 2, 2, 2, 2, 2])
                 for i, campo in enumerate(headers):
                     cols[i].markdown(linha[campo], unsafe_allow_html=True)
