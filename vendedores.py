@@ -77,7 +77,7 @@ def render_vendedores(df_fat, df_cart):
     col_esq, col_dir = st.columns(2)
 
     def render_coluna(col, lista):
-        headers = ['', 'Vendedor', 'Meta', 'Carteira', 'Faturado', 'Pendente', '% Atingido']
+        headers = [' ', 'Vendedor', 'Meta', 'Carteira', 'Faturado', 'Pendente', '% Atingido']
         with col:
             cols = st.columns([1, 3, 2, 2, 2, 2, 2])
             for i, campo in enumerate(headers):
