@@ -84,7 +84,7 @@ def render_vendedores(df_fat, df_cart):
                 cols[i].markdown(f"<strong>{campo}</strong>", unsafe_allow_html=True)
             for linha in lista:
                 st.markdown("<hr style='margin-top: 0.1rem; margin-bottom: 0.1rem'>", unsafe_allow_html=True)
-                cols = st.columns([1, 3, 2, 2, 2, 2, 2])
+                cols = st.columns([1, 3, 2, 2, 2, 2, 1])
                 for i, campo in enumerate(headers):
                     cols[i].markdown(linha[campo], unsafe_allow_html=True)
 
