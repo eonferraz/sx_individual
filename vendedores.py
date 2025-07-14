@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Parâmetro para tamanho da fonte dos valores
 TAMANHO_FONTE = 18  # Altere aqui o tamanho da fonte
-TAMANHO_FONTE_ROTULOS = 20  # Altere aqui o tamanho da fonte
+TAMANHO_FONTE_ROTULOS = 19  # Altere aqui o tamanho da fonte
 TAMANHO_FONTE_PERCENT = 16 # Fonte do % 
 
 # Emojis por vendedor
