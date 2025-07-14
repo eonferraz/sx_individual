@@ -20,15 +20,23 @@ def render_cards(df_fat, df_cart, df_ped, META_MENSAL, hoje):
         <style>
         .card { border-radius: 1px; padding: 5px; margin-bottom: 5px; text-align: center; }
         .card b { font-size: 20px; }
-        .card-title { font-size: 16x; display: block; }
+        .card-title { font-size: 16px; display: block; }
         .meta { background-color: #0160A2; color: white; }
         .realizado { background-color: #A0C63F; color: black; }
         .carteira { background-color: #FFD85B; color: black; }
         .restante { background-color: #d62728; color: white; }
+        .sx-title { font-size: 20px; font-weight: bold; color: #0160A2; padding-top: 25px; text-align: center; }
         </style>
     """, unsafe_allow_html=True)
 
-    col1, col2, col3, col4 = st.columns(4)
+    col0, col0b, col1, col2, col3, col4 = st.columns(6)
+
+    with col0:
+        st.image("logo.png", width=60)
+
+    with col0b:
+        st.markdown('<div class="sx-title">SX Lighting</div>', unsafe_allow_html=True)
+
     col1.markdown(f'<div class="card meta"><span class="card-title">Meta Mensal</span><b>R$ {META_MENSAL:,.2f}</b></div>'.replace(",", "X").replace(".", ",").replace("X", "."), unsafe_allow_html=True)
     col2.markdown(f'<div class="card realizado"><span class="card-title">Faturado</span><b>R$ {realizado:,.2f}</b></div>'.replace(",", "X").replace(".", ",").replace("X", "."), unsafe_allow_html=True)
     col3.markdown(f'<div class="card carteira"><span class="card-title">Carteira</span><b>R$ {carteira:,.2f}</b></div>'.replace(",", "X").replace(".", ",").replace("X", "."), unsafe_allow_html=True)
