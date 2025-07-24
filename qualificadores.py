@@ -40,7 +40,7 @@ METAS = {
     'Luciana Guisard': 190548.78,
     'Maria Luiza Santos': 190548.78,
     'Rebeca Santos': 190548.78,
-    'Nataly Correa': 190548.78,
+    'Nataly Corrêa': 190548.78,
     'Outros': 0.0
 }
 
