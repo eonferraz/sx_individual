@@ -86,5 +86,6 @@ else:
     render_cards(df_fat, df_cart, df_ped, META_MENSAL, hoje)   
     render_termometro(df_fat, df_cart, META_MENSAL, hoje)
     render_vendedores(df_fat, df_cart)
+    st.markdown("---")
     render_qualificadores()
     
