@@ -22,7 +22,7 @@ EMOJIS = {
     'Stefania Andrade': '🧚🏻‍♀️',
     'Yuri Rodrigues': '🐨',
     'Rebeca Santos': '🎯',
-    'Nataly Correa': '🚀'
+    'Nataly Corrêa': '🚀'
 }
 
 # Metas por qualificador
