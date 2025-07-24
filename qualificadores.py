@@ -1,8 +1,51 @@
-import pyodbc
+import streamlit as st
 import pandas as pd
+import pyodbc
+
+# Tamanhos de fonte
+TAMANHO_FONTE = 17
+TAMANHO_FONTE_ROTULOS = 19
+TAMANHO_FONTE_PERCENT = 16
+
+# Emojis por qualificador
+EMOJIS = {
+    'Aline Ferreira': '💣',
+    'Alvaro Marinho': '🦆',
+    'Christiana Carvalho': '🧸',
+    'Letícia Louzada': '🐅',
+    'Luciana Guisard': '🤝🏻',
+    'Maria Bianca Benco': '🍺',
+    'Maria Luiza Santos': '🐋',
+    'Maria Schmidt': '🦋',
+    'Mirian Goffi': '🍣',
+    'Monica Reis': '🤩',
+    'Stefania Andrade': '🧚🏻‍♀️',
+    'Yuri Rodrigues': '🐨',
+    'Rebeca Santos': '🎯',
+    'Nataly Correa': '🚀'
+}
+
+# Metas por qualificador
+METAS = {
+    'Christiana Carvalho': 746951.22,
+    'Letícia Louzada': 746951.22,
+    'Maria Schmidt': 190548.78,
+    'Maria Bianca Benco': 121951.22,
+    'Mirian Goffi': 609756.10,
+    'Stefania Andrade': 640243.90,
+    'Yuri Rodrigues': 190548.78,
+    'Alvaro Marinho': 190548.78,
+    'Aline Ferreira': 1832877.67,
+    'Monica Reis': 746951.22,
+    'Luciana Guisard': 190548.78,
+    'Maria Luiza Santos': 190548.78,
+    'Rebeca Santos': 190548.78,
+    'Nataly Correa': 190548.78,
+    'Outros': 0.0
+}
 
 def render_qualificadores():
-    # Conexão com o SQL Server
+    # Conexão com SQL Server
     conn = pyodbc.connect(
         "DRIVER={ODBC Driver 17 for SQL Server};"
         "SERVER=sx-global.database.windows.net;"
