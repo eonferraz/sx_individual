@@ -6,6 +6,8 @@ from titulo import render_titulo
 from cards import render_cards
 from termometro import render_termometro
 from vendedores import render_vendedores  # importa a função
+from qualificadores import render_qualificadores  # importa a função
+
 from tabelas import render_tabelas
 
 st.set_page_config(page_title="Dashboard de Faturamento e Carteira", layout="wide")
@@ -84,4 +86,5 @@ else:
     render_cards(df_fat, df_cart, df_ped, META_MENSAL, hoje)   
     render_termometro(df_fat, df_cart, META_MENSAL, hoje)
     render_vendedores(df_fat, df_cart)
+    render_qualificadores()
     
