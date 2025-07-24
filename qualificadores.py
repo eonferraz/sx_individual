@@ -1,4 +1,5 @@
 import pyodbc
+import pandas as pd
 
 def render_qualificadores():
     # Conexão com o SQL Server
