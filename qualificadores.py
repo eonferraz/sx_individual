@@ -38,9 +38,9 @@ METAS = {
     'Aline Ferreira': 1832877.67,
     'Monica Reis': 746951.22,
     'Luciana Guisard': 190548.78,
-    'Maria Luiza Santos': 190548.78,
-    'Rebeca Santos': 190548.78,
-    'Nataly Corrêa': 190548.78,
+    'Maria Luiza Santos': 186991.87,
+    'Rebeca Santos': 186991.87,
+    'Nataly Corrêa': 186991.87,
     'Outros': 0.0
 }
 
